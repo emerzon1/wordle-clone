@@ -8,8 +8,8 @@ const WordContainer = ({wordState}) => {
 
             return <div className="row">
                 {row.map(e => {
-                    return <div className="letter">
-
+                    return <div className={`letter ${e.color}`}>
+                        {e.letter}
                     </div>
                 })}
             </div>
