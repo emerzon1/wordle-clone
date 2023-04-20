@@ -24,16 +24,22 @@ function App() {
 
   const onKeyPress = (e) => {
     const clickedKey = e.key
-    console.log(e.keyCode)
-    
-    // console.log(guess.current, wordStateRef.current)
+
     const newState = JSON.parse(JSON.stringify(wordStateRef.current))
-    if (e.charCode != 8){
+    if (clickedKey === "Backspace") {
+      newState[guess.current][wordInd.current - 1].letter = ""
+      setWordIndex(w => w - 1)
+      setWordState(newState)
+    } else if (clickedKey === "ENTER") {
+      // changeLetterColor()
+      setWordIndex(0)
+      setCurrentGuess(g => g + 1)
+    } else if (e.charCode != 8){
       newState[guess.current][wordInd.current].letter = clickedKey
       setWordIndex(w => w + 1)
       setWordState(newState)
     }
-    else{
+    else {
       newState[guess.current][wordInd.current - 1].letter = 's';
       setWordIndex(w => w - 1)
       setWordState(newState)
